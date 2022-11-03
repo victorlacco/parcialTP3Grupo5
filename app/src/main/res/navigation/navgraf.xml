@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraf"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentCharacter"
+            app:destination="@id/fragmentCharacter" />
+        <argument
+            android:name="User"
+            app:argType="string"
+            android:defaultValue="Sr. Usuario" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCharacter"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentCharacter"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character" />
+    <fragment
+        android:id="@+id/fragmentSettings"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentSettings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/fragmentFavorites"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentFavorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

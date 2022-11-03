@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">ParcialTP3-G5</string>
+    <string name="app_name">Rick and Morty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="settings">Settings</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="home">Home</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="continuar">Continuar</string>
+    <string name="olvidaste_tu_contrasena">Olvidaste tu contraseña?</string>
+    <string name="todo">TODO</string>
+    <string name="character">Character</string>
+    <string name="nigth_mode">Nigth Mode</string>
+    <string name="permitir_agregar_favoritos">Permitir agregar Favoritos</string>
+    <string name="buscador_habilitado">Buscador habilitado</string>
+    <string name="origen">Origen:</string>
+    <string name="especie">Especie:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="alive">Alive</string>
+    <string name="todo1">TODO</string>
 </resources>
