@@ -11,7 +11,7 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_fragmentLogin_to_fragmentHome"
+            android:id="@+id/loginToHome"
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
@@ -26,6 +26,9 @@
             android:name="User"
             app:argType="string"
             android:defaultValue="Sr. Usuario" />
+        <argument
+            android:name="Pass"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCharacter"

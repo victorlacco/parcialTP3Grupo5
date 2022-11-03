@@ -20,4 +20,7 @@
     <string name="nombre">Nombre:</string>
     <string name="alive">Alive</string>
     <string name="todo1">TODO</string>
+
+    <!-- Home Strings -->
+    <string name="welcome">¡Hola, %s !</string>
 </resources>
