@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navgraf" />
+        app:navGraph="@navigation/navgraf"
+        tools:ignore="MissingClass" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
