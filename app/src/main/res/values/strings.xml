@@ -9,7 +9,7 @@
     <string name="usuario">Usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="continuar">Continuar</string>
-    <string name="olvidaste_tu_contrasena">Olvidaste tu contraseña?</string>
+    <string name="olvidaste_tu_contrasena"><a href="https://www.google.com">Olvidaste tu contraseña?</a></string>
     <string name="todo">TODO</string>
     <string name="character">Character</string>
     <string name="nigth_mode">Nigth Mode</string>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraf"
-    app:startDestination="@id/fragmentHome">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -11,7 +11,7 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/loginToHome"
+            android:id="@+id/action_fragmentLogin_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
     <fragment
@@ -23,11 +23,7 @@
             android:id="@+id/action_fragmentHome_to_fragmentCharacter"
             app:destination="@id/fragmentCharacter" />
         <argument
-            android:name="User"
-            app:argType="string"
-            android:defaultValue="Sr. Usuario" />
-        <argument
-            android:name="Pass"
+            android:name="username"
             app:argType="string" />
     </fragment>
     <fragment
