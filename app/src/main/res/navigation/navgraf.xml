@@ -32,10 +32,12 @@
         android:label="fragment_character"
         tools:layout="@layout/fragment_character" />
     <fragment
-        android:id="@+id/fragmentSettings"
-        android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentSettings"
+        android:id="@+id/settings"
+        android:name="ar.edu.ort.parcialtp3_g5.fragments.SettingsActivity$SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+
+
     <fragment
         android:id="@+id/fragmentFavorites"
         android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentFavorites"

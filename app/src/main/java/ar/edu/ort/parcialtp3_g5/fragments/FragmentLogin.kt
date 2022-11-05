@@ -1,15 +1,15 @@
 package ar.edu.ort.parcialtp3_g5.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.FragmentOnAttachListener
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import ar.edu.ort.parcialtp3_g5.R
 
 class FragmentLogin : Fragment() {
@@ -19,8 +19,14 @@ class FragmentLogin : Fragment() {
     private lateinit var txtInputPassword: EditText
     private lateinit var btnGoToHome: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val isNightModeEnabled = prefs.getBoolean("switchNightMode",false)
+        if(isNightModeEnabled) {
+             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,11 +38,17 @@ class FragmentLogin : Fragment() {
     }
 
     override fun onStart() {
+
+
         super.onStart()
+
+
+
 
         val navController = findNavController()
 
         btnGoToHome = vista.findViewById(R.id.id_buttonGoToHome)
+
 
         txtInputUser = vista.findViewById(R.id.id_txtInputUser)
 
