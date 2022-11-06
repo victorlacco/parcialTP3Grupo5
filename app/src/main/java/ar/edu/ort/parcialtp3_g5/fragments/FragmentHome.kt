@@ -8,15 +8,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.parcialtp3_g5.R
+import ar.edu.ort.parcialtp3_g5.activities.UserSession
+import ar.edu.ort.parcialtp3_g5.adapter.HomeCharacters
 
 class FragmentHome : Fragment() {
     private lateinit var userEditText: String
     private lateinit var passwordEditText: String
     lateinit var userWelcome: TextView
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
     override fun onCreateView(
@@ -27,8 +34,16 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter = HomeCharacters()
+
+        if (recyclerView != null) {
+            val layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager =layoutManager
+            recyclerView.adapter = adapter
+        }
         userWelcome = view.findViewById(R.id.welcomeText)
-        userWelcome.text = getString(R.string.welcome, "[insertar-nombre]")
+        userWelcome.text = getString(R.string.welcome, UserSession.userName)
     }
     override fun onStart() {
         super.onStart()

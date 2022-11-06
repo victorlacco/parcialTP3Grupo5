@@ -1,18 +1,20 @@
 package ar.edu.ort.parcialtp3_g5.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import ar.edu.ort.parcialtp3_g5.R
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +26,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupDrawerNavigationView()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+
+        nav_view.setupWithNavController(navHostFragment.navController)
 
         //Busco el Navegación Controller
-        navController = Navigation.findNavController(this,R.id.fragmentContainerView)
+   /*     navController = Navigation.findNavController(this,R.id.fragmentContainerView)
 
         //Asigno al Drawer Menu el control de navegación
         vista = findViewById(R.id.nav_view)
@@ -34,18 +40,56 @@ class MainActivity : AppCompatActivity() {
 
         drawer = findViewById(R.id.drawer_layout_id)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer)
-
+*/
         //Seteo la configuración
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
         //Dejo un lisener para cuando se produce el cambio de destino unicamente me reemplace el icono.
-        //navController.addOnDestinationChangedListener { _, _, _ ->
-        //    supportActionBar?.setHomeAsUpIndicator(R.drawable.hamburger)
-        //}
+        navHostFragment.navController.addOnDestinationChangedListener { _, _, _ ->
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.hamburger)
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, drawer)
+        //Fuezo al boton de navegación de la toolbar que solo abra el menú Drawer
+        if (drawer_layout_id.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout_id.closeDrawer(GravityCompat.START)
+        } else {
+            drawer_layout_id.openDrawer(GravityCompat.START)
+        }
+
+        //Cancelo la navegación
+        //return NavigationUI.navigateUp(navController, drawer_layout_id)
+        return false
+    }
+
+
+    private fun setupDrawerNavigationView(){
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val drawerNavView = findViewById<NavigationView>(R.id.nav_view)
+        vista = findViewById(R.id.nav_view)
+        vista.setupWithNavController(navHostFragment.navController)
+
+        drawer = findViewById(R.id.drawer_layout_id)
+        NavigationUI.setupActionBarWithNavController(this, navHostFragment.navController, drawer)
+        drawerNavView.setupWithNavController(navHostFragment.navController)
+
+        navHostFragment.navController.addOnDestinationChangedListener{ _, destination, arguments ->
+            if(destination.id == R.id.fragmentLogin){
+                drawerNavView.visibility = View.GONE
+            }else {
+                drawerNavView.visibility = View.VISIBLE
+            }
+
+            if(destination.id == R.id.fragmentHome){
+                arguments?.getString("username")?.let { UserSession.userName = it }
+            }
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.drawer_menu, menu)
+        return true
     }
 
 }

@@ -25,43 +25,31 @@ class FragmentLogin : Fragment() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val isNightModeEnabled = prefs.getBoolean("switchNightMode",false)
         if(isNightModeEnabled) {
-             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
 
         vista = inflater.inflate(R.layout.fragment_login, container, false)
+
+        txtInputUser = vista.findViewById(R.id.id_txtInputUser)
+        txtInputPassword = vista.findViewById(R.id.id_txtInputPassword)
+        btnGoToHome = vista.findViewById(R.id.id_buttonGoToHome)
 
         return vista
     }
 
     override fun onStart() {
-
-
         super.onStart()
 
-
-
-
-        val navController = findNavController()
-
-        btnGoToHome = vista.findViewById(R.id.id_buttonGoToHome)
-
-
-        txtInputUser = vista.findViewById(R.id.id_txtInputUser)
-
-        txtInputPassword = vista.findViewById(R.id.id_txtInputPassword)
-
         btnGoToHome.setOnClickListener {
-
+            val navController = findNavController()
             navController.navigate(
-                FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.toString())
+                FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.text.toString())
             )
-
         }
-
     }
 
 }
