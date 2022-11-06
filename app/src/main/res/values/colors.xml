@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#F2F3F8</color>
+
+    <!-- Character card colors -->
+    <color name="lightYellow">#FBEFA8</color> #86332D
+    <color name="darkPurple">#3B3A5D</color>
+    <color name="bordeau">#86332D</color>
 </resources>
