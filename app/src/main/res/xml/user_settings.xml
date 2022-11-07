@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:fontFamily="monospace"
+        android:key="switchNightMode"
+        android:title="@string/nigth_mode" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:fontFamily="monospace"
+        android:key="switchBuscador"
+        android:title="@string/buscador_habilitado" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:fontFamily="monospace"
+        android:key="switchFavoritos"
+        android:title="@string/permitir_agregar_favoritos" />
+</PreferenceScreen>

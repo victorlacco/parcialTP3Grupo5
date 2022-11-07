@@ -8,7 +8,7 @@
         android:id="@+id/fragmentFavorites"
         android:title="@string/favoritos" />
     <item
-        android:id="@+id/fragmentSettings"
+        android:id="@+id/settings"
         android:title="@string/settings" />
     <item
         android:id="@+id/fragmentLogin"

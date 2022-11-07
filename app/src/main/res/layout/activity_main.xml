@@ -8,12 +8,14 @@
     tools:context=".activities.MainActivity">
 
     <fragment
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navgraf" />
+        app:navGraph="@navigation/navgraf"
+        tools:ignore="MissingClass" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -21,7 +23,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/drawe_menu" >
+        android:visibility="invisible"
+        app:menu="@menu/drawer_menu">
 
     </com.google.android.material.navigation.NavigationView>
 

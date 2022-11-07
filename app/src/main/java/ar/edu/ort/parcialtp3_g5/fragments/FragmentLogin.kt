@@ -1,67 +1,55 @@
 package ar.edu.ort.parcialtp3_g5.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import ar.edu.ort.parcialtp3_g5.R
 
 class FragmentLogin : Fragment() {
 
-    lateinit var vista: View
-    lateinit var btnGoToHome: Button
-    private lateinit var userEmailEditText: EditText
-    private lateinit var passwordEditText: EditText
+    private lateinit var vista: View
+    private lateinit var txtInputUser: EditText
+    private lateinit var txtInputPassword: EditText
+    private lateinit var btnGoToHome: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val isNightModeEnabled = prefs.getBoolean("switchNightMode",false)
+        if(isNightModeEnabled) {
+             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        vista = inflater.inflate(R.layout.fragment_login, container, false)
-        btnGoToHome = vista.findViewById(R.id.id_buttonGoToHome)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        // Inflate the layout for this fragment
 
-        //txtInputUser = vista.findViewById(R.id.usrEmail)
+        vista = inflater.inflate(R.layout.fragment_login, container, false)
+
+        txtInputUser = vista.findViewById(R.id.id_txtInputUser)
+        txtInputPassword = vista.findViewById(R.id.id_txtInputPassword)
+        btnGoToHome = vista.findViewById(R.id.id_buttonGoToHome)
 
         return vista
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val navController = findNavController()
-        val continueButton = view.findViewById<Button>(R.id.id_buttonGoToHome)
-        userEmailEditText = view.findViewById(R.id.usrEmail)
-        passwordEditText = view.findViewById(R.id.usrPassword)
-
-        // Button listener
-        continueButton.setOnClickListener {
-
-            // Navigation to home screen
-            navController.navigate(
-                FragmentLoginDirections.loginToHome(
-                    userEmailEditText.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            )
-        }
-    }
-
     override fun onStart() {
         super.onStart()
-        activity?.title = "Login"
+
         btnGoToHome.setOnClickListener {
-        val action = FragmentLoginDirections.loginToHome(userEmailEditText.text.toString(),
-            passwordEditText.text.toString())
-        vista.findNavController().navigate(action)
-
+            val navController = findNavController()
+            navController.navigate(
+                FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.text.toString())
+            )
         }
-
     }
 
 }
