@@ -12,9 +12,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ar.edu.ort.parcialtp3_g5.R
+import ar.edu.ort.parcialtp3_g5.api.RickAndMortyService
+import ar.edu.ort.parcialtp3_g5.data.RickAndMortyResponse
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Callback
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,10 +29,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         setupDrawerNavigationView()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-
         nav_view.setupWithNavController(navHostFragment.navController)
+
+        val api = RickAndMortyService.create(getString(R.string.baseURL))
 
         //Busco el Navegación Controller
    /*     navController = Navigation.findNavController(this,R.id.fragmentContainerView)

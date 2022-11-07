@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.parcialtp3_g5.R
 import ar.edu.ort.parcialtp3_g5.activities.UserSession
+import ar.edu.ort.parcialtp3_g5.adapter.HomeCharacters
 
 class FragmentFavorites : Fragment() {
 
@@ -28,14 +30,21 @@ class FragmentFavorites : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.favorites_recyclerview)
+        val adapter = HomeCharacters()
 
-        //productsRecyclerView = view.findViewById(R.id.product_recyclerview)
+        if (recyclerView != null) {
+            val layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager =layoutManager
+            recyclerView.adapter = adapter
+        }
+
         title = view.findViewById(R.id.id_textFavorites)
 
         // Pongo el nombre del usuario en el titulo.
+/*
         title.text = "Hola, ${UserSession.userName}, estos son tus personajes favoritos "
-
-
+*/
 
     }
 

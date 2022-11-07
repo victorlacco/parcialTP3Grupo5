@@ -14,6 +14,7 @@
     <string name="olvidaste_tu_contrasena"><a href="https://www.google.com">¿Olvidaste tu contraseña?</a></string>
     <string name="todo">TODO</string>
     <string name="character">Character</string>
+    <string name="myFavorites">Mis personajes favoritos</string>
     <string name="nigth_mode">Nigth Mode</string>
     <string name="permitir_agregar_favoritos">Permitir agregar Favoritos</string>
     <string name="buscador_habilitado">Buscador habilitado</string>
@@ -23,6 +24,7 @@
     <string name="alive">Alive</string>
     <string name="todo1">TODO</string>
 
+    <string name="baseURL">https://rickandmortyapi.com/</string>
     <!-- Home Strings -->
     <string name="welcome">¡Hola, %s !</string>
 </resources>
