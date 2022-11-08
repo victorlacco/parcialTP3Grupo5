@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.parcialtp3_g5.R
 
-public class HomeCharacters : RecyclerView.Adapter<HomeCharacters.ViewHolder>(){
+public class HomeCharactersAdapter : RecyclerView.Adapter<HomeCharactersAdapter.ViewHolder>(){
 
     val titles = arrayOf("Nombre1", "Nombre2", "Nombre3", "Nombre4", "Nombre5")
     val status = arrayOf("status", "status", "status", "status", "status")

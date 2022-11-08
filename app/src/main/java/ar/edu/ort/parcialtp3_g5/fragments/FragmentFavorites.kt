@@ -11,7 +11,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.parcialtp3_g5.R
-import ar.edu.ort.parcialtp3_g5.adapter.HomeCharacters
+import ar.edu.ort.parcialtp3_g5.adapter.HomeCharactersAdapter
 
 class FragmentFavorites : Fragment() {
 
@@ -40,7 +40,7 @@ class FragmentFavorites : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(isFavoritosEnabled){
             val recyclerView = view?.findViewById<RecyclerView>(R.id.favorites_recyclerview)
-            val adapter = HomeCharacters()
+            val adapter = HomeCharactersAdapter()
 
             if (recyclerView != null) {
                 val layoutManager = LinearLayoutManager(context)

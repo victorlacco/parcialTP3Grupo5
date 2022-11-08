@@ -1,13 +1,19 @@
 package ar.edu.ort.parcialtp3_g5.fragments
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
@@ -51,6 +57,7 @@ class FragmentLogin : Fragment() {
             navController.navigate(
                 FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.text.toString())
             )
+            hideKeyboard()
         }
     }
     override fun onResume() {
@@ -60,5 +67,11 @@ class FragmentLogin : Fragment() {
     override fun onStop() {
         super.onStop()
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    }
+
+    private fun hideKeyboard(){
+        val imm: InputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val viewRoot = vista.findViewById<ConstraintLayout>(R.id.id_btn_login)
+        imm.hideSoftInputFromWindow(viewRoot.windowToken, 0)
     }
 }

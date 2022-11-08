@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="656dp"
+        app:layout_constraintGuide_end="581dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

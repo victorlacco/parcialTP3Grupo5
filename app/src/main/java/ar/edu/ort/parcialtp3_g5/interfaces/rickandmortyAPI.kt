@@ -2,6 +2,7 @@ package ar.edu.ort.parcialtp3_g5.interfaces
 
 import ar.edu.ort.parcialtp3_g5.data.RickAndMortyResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,6 +18,8 @@ interface rickandmortyAPI {
     fun getCharacters(): Call<RickAndMortyResponse?>?
 
     @GET("api/character")
-    fun getSearchCharacters(@Query("name") name: String):
-            Call<RickAndMortyResponse?>?
+    fun getSearchCharacters(@Query("name") name: String): Call<RickAndMortyResponse?>?
+
+    @GET("api/character")
+    fun getSearchCharacters2(@Query("name") name: String): Response<RickAndMortyResponse>
 }
