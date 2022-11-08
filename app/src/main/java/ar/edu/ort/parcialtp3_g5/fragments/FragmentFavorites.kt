@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +18,17 @@ class FragmentFavorites : Fragment() {
     //private lateinit var productsRecyclerView: RecyclerView
     //private lateinit var productList: List<Product>
     private lateinit var title: TextView
+    lateinit var activity: AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity = (requireActivity() as AppCompatActivity)
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        activity.supportActionBar?.title = getString(R.string.homeHeader)
 
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
@@ -52,6 +57,11 @@ class FragmentFavorites : Fragment() {
       }else{
             title = view.findViewById(R.id.id_textFavorites)
       }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity.supportActionBar?.title = getString(R.string.homeHeader)
     }
 
 }

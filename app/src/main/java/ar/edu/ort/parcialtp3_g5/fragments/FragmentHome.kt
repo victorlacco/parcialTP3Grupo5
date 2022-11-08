@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,13 +20,17 @@ class FragmentHome : Fragment() {
     private lateinit var passwordEditText: String
     lateinit var userWelcome: TextView
     private lateinit var linearLayoutManager: LinearLayoutManager
-
+    lateinit var activity: AppCompatActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity = (requireActivity() as AppCompatActivity)
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.homeHeader)
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -47,6 +52,7 @@ class FragmentHome : Fragment() {
         super.onStart()
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        activity.supportActionBar?.title = getString(R.string.homeHeader)
 
 
         Log.d("Test",prefs.getBoolean("switchNightMode",false).toString())

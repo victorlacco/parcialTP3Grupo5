@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import ar.edu.ort.parcialtp3_g5.R
+
 
 class FragmentLogin : Fragment() {
 
@@ -51,5 +53,12 @@ class FragmentLogin : Fragment() {
             )
         }
     }
-
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+    override fun onStop() {
+        super.onStop()
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    }
 }

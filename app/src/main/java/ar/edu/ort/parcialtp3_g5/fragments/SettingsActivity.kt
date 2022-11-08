@@ -11,12 +11,12 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_settings)
 
-
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.settings, SettingsFragment())
             .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
     }
 
@@ -24,6 +24,13 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.user_settings, rootKey)
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.settings)
+
+        }
+
+        override fun onStart() {
+            super.onStart()
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.settings)
         }
 
         /*override fun onPreferenceChange(
