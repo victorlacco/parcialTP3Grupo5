@@ -28,7 +28,7 @@ class FragmentFavorites : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        activity.supportActionBar?.title = getString(R.string.homeHeader)
+        activity.supportActionBar?.title = getString(R.string.favorites)
 
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
@@ -50,10 +50,6 @@ class FragmentFavorites : Fragment() {
 
             title = view.findViewById(R.id.id_textFavorites)
 
-        // Pongo el nombre del usuario en el titulo.
-/*
-        title.text = "Hola, ${UserSession.userName}, estos son tus personajes favoritos "
-*/
       }else{
             title = view.findViewById(R.id.id_textFavorites)
       }
@@ -61,7 +57,7 @@ class FragmentFavorites : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        activity.supportActionBar?.title = getString(R.string.homeHeader)
+        activity.supportActionBar?.title = getString(R.string.favorites)
     }
 
 }

@@ -20,10 +20,7 @@ import ar.edu.ort.parcialtp3_g5.entities.RickAndMortyCharacter
 import retrofit2.*
 
 class FragmentHome : Fragment() {
-    private lateinit var userEditText: String
-    private lateinit var passwordEditText: String
     lateinit var userWelcome: TextView
-    private lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var activity: AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +34,6 @@ class FragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.homeHeader)
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

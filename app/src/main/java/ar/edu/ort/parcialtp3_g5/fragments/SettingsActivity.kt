@@ -33,11 +33,5 @@ class SettingsActivity : AppCompatActivity() {
             (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.settings)
         }
 
-        /*override fun onPreferenceChange(
-            preference: Preference,
-            newValue: Any
-        ): Boolean {
-            return true
-        }*/
     }
 }

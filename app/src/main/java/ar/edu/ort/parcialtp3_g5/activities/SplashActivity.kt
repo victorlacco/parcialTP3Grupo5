@@ -6,7 +6,6 @@ import android.os.Handler
 import ar.edu.ort.parcialtp3_g5.R
 import android.content.Intent
 import android.os.Looper
-import kotlinx.coroutines.delay
 
 class SplashActivity : AppCompatActivity() {
 
