@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_character" />
     <fragment
         android:id="@+id/settings"
-        android:name="ar.edu.ort.parcialtp3_g5.fragments.SettingsActivity$SettingsFragment"
+        android:name="ar.edu.ort.parcialtp3_g5.activities.SettingsActivity$SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 
@@ -43,13 +43,4 @@
         android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentFavorites"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
-    <fragment
-        android:id="@+id/fragmentCharacter2"
-        android:name="ar.edu.ort.parcialtp3_g5.activities.FragmentCharacter"
-        android:label="FragmentCharacter" >
-        <action
-            android:id="@+id/action_fragmentCharacter2_to_fragmentCharacter"
-            app:destination="@id/fragmentCharacter"
-            app:launchSingleTop="false" />
-    </fragment>
 </navigation>

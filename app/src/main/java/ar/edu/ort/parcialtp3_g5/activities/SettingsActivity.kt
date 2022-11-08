@@ -1,4 +1,4 @@
-package ar.edu.ort.parcialtp3_g5.fragments
+package ar.edu.ort.parcialtp3_g5.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
