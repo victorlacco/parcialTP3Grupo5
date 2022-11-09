@@ -38,7 +38,7 @@ class FragmentFavorites : Fragment() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val isFavoritosEnabled = prefs.getBoolean("switchFavoritos",false)
         super.onViewCreated(view, savedInstanceState)
-        if(isFavoritosEnabled){
+/*        if(isFavoritosEnabled){
             val recyclerView = view?.findViewById<RecyclerView>(R.id.favorites_recyclerview)
             val adapter = HomeCharactersAdapter()
 
@@ -52,7 +52,7 @@ class FragmentFavorites : Fragment() {
 
       }else{
             title = view.findViewById(R.id.id_textFavorites)
-      }
+      }*/
     }
 
     override fun onStart() {

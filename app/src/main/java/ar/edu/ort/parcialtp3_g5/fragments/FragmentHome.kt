@@ -39,14 +39,7 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = HomeCharactersAdapter()
 
-        if (recyclerView != null) {
-            val layoutManager = LinearLayoutManager(context)
-            recyclerView.layoutManager =layoutManager
-            recyclerView.adapter = adapter
-        }
         userWelcome = view.findViewById(R.id.welcomeText)
         userWelcome.text = getString(R.string.welcome, UserSession.userName)
 
@@ -69,6 +62,14 @@ class FragmentHome : Fragment() {
                 val heroes = arrayOfNulls<String>(characters?.size ?: 0)
 
                 if (characters != null) {
+                    val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
+                    val adapter = HomeCharactersAdapter(characters)
+
+                    if (recyclerView != null) {
+                        val layoutManager = LinearLayoutManager(context)
+                        recyclerView.layoutManager =layoutManager
+                        recyclerView.adapter = adapter
+                    }
                     for (i in characters.indices) {
                         heroes[i] = characters[i].status
                     }
