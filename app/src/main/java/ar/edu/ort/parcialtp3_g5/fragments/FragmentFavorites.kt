@@ -12,6 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.edu.ort.parcialtp3_g5.R
 import ar.edu.ort.parcialtp3_g5.adapter.HomeCharactersAdapter
+import ar.edu.ort.parcialtp3_g5.api.RickAndMortyService
+import ar.edu.ort.parcialtp3_g5.data.RickAndMortyResponse
+import ar.edu.ort.parcialtp3_g5.entities.RickAndMortyCharacter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FragmentFavorites : Fragment() {
 
@@ -38,21 +44,46 @@ class FragmentFavorites : Fragment() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val isFavoritosEnabled = prefs.getBoolean("switchFavoritos",false)
         super.onViewCreated(view, savedInstanceState)
-/*        if(isFavoritosEnabled){
-            val recyclerView = view?.findViewById<RecyclerView>(R.id.favorites_recyclerview)
-            val adapter = HomeCharactersAdapter()
+        if(isFavoritosEnabled){
+            val baseURL = getString(R.string.baseURL)
+            val api = RickAndMortyService.create(baseURL)  //create service
 
-            if (recyclerView != null) {
-                val layoutManager = LinearLayoutManager(context)
-                recyclerView.layoutManager =layoutManager
-                recyclerView.adapter = adapter
-            }
+            //Call Request
+            api.getAllCharacters()?.enqueue(object : Callback<RickAndMortyResponse?> {
 
-            title = view.findViewById(R.id.id_textFavorites)
+                override fun onResponse(
+                    call: Call<RickAndMortyResponse?>,
+                    response: Response<RickAndMortyResponse?>
+                ) {
+                    val response: RickAndMortyResponse? = (response.body() as RickAndMortyResponse)!!
 
+                    val characters: MutableList<RickAndMortyCharacter>? = response?.results?.toMutableList()
+
+                    val heroes = arrayOfNulls<String>(characters?.size ?: 0)
+
+                    if (characters != null) {
+                        val recyclerView = view?.findViewById<RecyclerView>(R.id.favorites_recyclerview)
+                        val adapter = HomeCharactersAdapter(characters)
+
+                        if (recyclerView != null) {
+                            val layoutManager = LinearLayoutManager(context)
+                            recyclerView.layoutManager =layoutManager
+                            recyclerView.adapter = adapter
+                        }
+                        for (i in characters.indices) {
+                            heroes[i] = characters[i].status
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<RickAndMortyResponse?>, t: Throwable) {
+
+                    //Snackbar.make(findViewById(R.id.recyclerView), t.message.toString(), Snackbar.LENGTH_LONG).show()
+                }
+            })
       }else{
             title = view.findViewById(R.id.id_textFavorites)
-      }*/
+      }
     }
 
     override fun onStart() {

@@ -24,6 +24,12 @@
     <string name="alive">Alive</string>
     <string name="todo1">TODO</string>
     <string name="homeHeader">Página principal</string>
+    <string name="Alive">Alive</string>
+    <string name="Dead">Dead</string>
+    <string name="AliveTranslated">Vivo</string>
+    <string name="DeadTranslated">Muerto</string>
+    <string name="Unknown">Desconocido</string>
+
 
 
     <string name="baseURL">https://rickandmortyapi.com/</string>

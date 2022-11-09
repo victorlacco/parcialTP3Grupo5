@@ -25,12 +25,19 @@
         <argument
             android:name="username"
             app:argType="string" />
+        <argument
+            android:name="pass"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCharacter"
         android:name="ar.edu.ort.parcialtp3_g5.fragments.FragmentCharacter"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/settings"
         android:name="ar.edu.ort.parcialtp3_g5.activities.SettingsActivity$SettingsFragment"

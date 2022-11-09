@@ -51,7 +51,7 @@ class FragmentLogin : Fragment() {
         btnGoToHome.setOnClickListener {
             val navController = findNavController()
             navController.navigate(
-                FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.text.toString())
+                FragmentLoginDirections.actionFragmentLoginToFragmentHome(txtInputUser.text.toString(), txtInputPassword?.text.toString())
             )
             hideKeyboard()
         }
